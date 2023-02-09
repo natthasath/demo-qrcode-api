@@ -12,6 +12,17 @@ QR Code is a compact and efficient barcode that can store data such as URLs, con
   - [MIcrosoft 365](https://linkmix.co/14572088)
   - [NIDA UApp](https://linkmix.co/14595825)
 
+### ⭐ Features
+
+- Single URL
+- Multiple URLs
+- Email Address
+- Mobile Message
+- Phone
+- Contact
+- Event
+- Multiple URLs & Check OS Redirect (Android & iOS)
+
 ### 🏆 Run
 
 - [http://localhost:8000/docs](http://localhost:8000/docs)
