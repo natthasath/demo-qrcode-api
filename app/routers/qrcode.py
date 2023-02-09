@@ -13,6 +13,10 @@ router = APIRouter(
 async def config(data: ConfigSchema = Depends(ConfigSchema)):
     return QRcodeService().config(data.ngrok_url)
 
+@router.post("/qrcode_logo")
+async def qrcode_logo(data: SingleUrlSchema = Depends(SingleUrlSchema)):
+    return QRcodeService().qrcode_logo(data.url)
+
 @router.post("/single_url")
 async def single_url(data: SingleUrlSchema = Depends(SingleUrlSchema)):
     return QRcodeService().single_url(data.url)

@@ -22,6 +22,7 @@ QR Code is a compact and efficient barcode that can store data such as URLs, con
 - Contact
 - Event
 - Multiple URLs & Check OS Redirect (Android & iOS)
+- QRCode with Logo
 
 ### 🏆 Run
 

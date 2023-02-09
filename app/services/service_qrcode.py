@@ -10,12 +10,26 @@ class QRcodeService:
         self.url_ios = config('URL_IOS')
         self.url_android = config('URL_ANDROID')
         self.url_windows = config('URL_WINDOWS')
+        self.logo_default = config("LOGO_DEFAULT")
 
     def config(self, url):
         content = {"message": True}
         response = JSONResponse(content=content)
         response.set_cookie(key='url', value=url)
         return response
+
+    def qrcode_logo(self, url):
+        image = qrcode.make(url)
+        logo = Image.open(self.logo_default)
+        logo_size = int(image.size[0] * 0.25)
+        logo = logo.resize((logo_size, logo_size), Image.ANTIALIAS)
+        logo_img = Image.new("RGBA", image.size, (255, 255, 255, 0))
+        logo_img.paste(logo, ((image.size[0] - logo_size) // 2, (image.size[1] - logo_size) // 2))
+        image = Image.alpha_composite(image.convert("RGBA"), logo_img)
+        buffer = BytesIO()
+        image.save(buffer, "PNG")
+        buffer.seek(0)
+        return StreamingResponse(buffer, media_type="image/png")
 
     def single_url(self, url):
         image = qrcode.make(url)
