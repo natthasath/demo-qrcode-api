@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import template, qrcode
+from app.routers import template, qrcode, room
 from app.tag import SubTags, Tags
 
 app = FastAPI(
@@ -33,7 +33,7 @@ app.add_middleware(
 )
 
 app.include_router(qrcode.router)
-#
+app.include_router(room.router)
 #
 #
 
